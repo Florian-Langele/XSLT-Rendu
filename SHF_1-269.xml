@@ -1,0 +1,1662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="out/ODD_SHF_1-269.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="out/ODD_SHF_1-269.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <!-- TEI Header encodé en s'inspirant de l'exemple que m'a proposé Mme Albouy https://github.com/paulhectork/tnah2021_xml-tei_rendu/blob/main/froissart.xml -->
+      <fileDesc>
+         <titleStmt>
+            <title>Chroniques</title>
+            <author>Jean Froissart</author>
+            <respStmt>
+               <resp>Edition en ligne des différents témoins avec découpage du texte</resp>
+               <!-- Lien du site Online Froissart mis dans un attribut ref pour eviter de créer une unique balise dans une unique balise -->
+               <orgName ref="http://www.dhi.ac.uk/onlinefroissart">The Online Froissart</orgName>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>Ecole nationale des Chartes</publisher>
+            <date when="2023-02-08">8 fevrier 2023</date>
+         </publicationStmt>
+         <sourceDesc>
+            <listWit>
+               <!-- Premier témoin qui est conservé à Chicago, choix de mettre une unique lettre en capitale pour identifier les témoins, on voit facilement la différence comme ça -->
+               <witness xml:id="C">
+                  <msDesc>
+                     <!-- Information pour identifier et localiser le manuscrit -->
+                     <msIdentifier>
+                        <placeName>
+                           <country>United State of America</country>
+                           <settlement>Chicago</settlement>
+                        </placeName>
+                        <institution>Newberry Library</institution>
+                        <idno>MS Case f.37.1</idno>
+                     </msIdentifier>
+                     <msContents>
+                        <!-- Trouvé sur le site Online Froissart le manuscrit est composé de deux ouvrages,
+                            le Livre I des Chroniques et un résumé généalogique de la famille royale française de Jean le Tartier -->
+                        <textLang>Moyen français</textLang>
+                        <msItem>
+                           <docAuthor>Jean le Tartier</docAuthor>
+                           <title>Short genealogical chronicle of France</title>
+                        </msItem>
+                        <msItem>
+                           <docAuthor>Jean Froissart</docAuthor>
+                           <title>Chroniques, Livre I</title>
+                        </msItem>
+                     </msContents>
+                     <physDesc>
+                        <objectDesc>
+                           <supportDesc>
+                              <support>parchemin</support>
+                              <extent>277 folio</extent>
+                           </supportDesc>
+                        </objectDesc>
+                     </physDesc>
+                     <history>
+                        <origin>
+                           <origDate type="precise">1430</origDate>
+                           <!-- Origine picarde ou flandres française d'après Online Froissart -->
+                           <origPlace cert="medium">Partie septantrionale de la France</origPlace>
+                        </origin>
+                     </history>
+                     <additional>
+                        <adminInfo>
+                           <recordHist>
+                              <!-- Impossible de mettre un attribut ref à la balise source -->
+                              <source>
+                                 <ref target='https://www.dhi.ac.uk/onlinefroissart/apparatus.jsp?type=codi&amp;node=Chi-1'>The Online Froissart</ref>
+                              </source>
+                           </recordHist>
+                           <custodialHist>
+                              <custEvent type="acquisition" when="1930">Newberry Librabry from Maggs Brothers</custEvent>
+                           </custodialHist>
+                        </adminInfo>
+                     </additional>
+                  </msDesc>
+               </witness>
+               <!-- Deuxième témoin, mêmes balises que pour le premier mais pas la même source de description, il n'y en avait pas sur Online Froissart -->
+               <witness xml:id="N">
+                  <msDesc>
+                     <msIdentifier>
+                        <placeName>
+                           <country>United State of America</country>
+                           <settlement>New York</settlement>
+                        </placeName>
+                        <institution>The Morgan Library</institution>
+                        <idno>ms. M.804</idno>
+                     </msIdentifier>            
+                     <msContents>
+                        <textLang>Moyen français(patois bourguignon)</textLang>
+                        <msItem>
+                           <docAuthor>Jean Froissart</docAuthor>
+                           <title>Chroniques</title>
+                        </msItem>
+                     </msContents>
+                     <physDesc>
+                        <objectDesc>
+                           <supportDesc>
+                              <support>parchemin</support>
+                              <extent>363 folio</extent>
+                           </supportDesc>
+                        </objectDesc>
+                     </physDesc>
+                     <history>
+                        <origin>
+                           <origDate type="date-range" cert="high">1412-1415</origDate>
+                           <origPlace cert="medium">Paris</origPlace>
+                        </origin>
+                     </history>
+                     <additional>
+                        <adminInfo>
+                           <recordHist>
+                              <source>
+                                 <ref target='https://www.themorgan.org/manuscript/147009'>The Morgan Library &amp; Museum</ref>
+                              </source>
+                           </recordHist>
+                        </adminInfo>
+                     </additional>
+                  </msDesc>
+               </witness>
+               <!-- Troisième témoin, même balise avec la même source que le premier témoin -->
+               <witness xml:id="P">
+                  <msDesc>
+                     <msIdentifier>
+                        <placeName>
+                           <country>France</country>
+                           <settlement>Paris</settlement>
+                        </placeName>
+                        <institution>Bibliothèque Nationale de France</institution>
+                        <idno>ms. fr. 2655</idno>
+                     </msIdentifier>            
+                     <msContents>
+                        <textLang>Moyen français</textLang>
+                        <msItem>
+                           <docAuthor>Jean Froissart</docAuthor>
+                           <title>Chroniques, Livre I(incomplet)</title>
+                        </msItem>
+                     </msContents>
+                     <physDesc>
+                        <objectDesc>
+                           <supportDesc>
+                              <support>parchemin</support>
+                              <extent>324 folio</extent>
+                           </supportDesc>
+                        </objectDesc>
+                     </physDesc>
+                     <history>
+                        <origin>
+                           <origDate type="precise" cert="medium">1400</origDate>
+                           <origPlace cert="high">Paris</origPlace>
+                        </origin>
+                     </history>
+                     <additional>
+                        <adminInfo>
+                           <recordHist>
+                              <source>
+                                 <ref target='https://www.dhi.ac.uk/onlinefroissart/apparatus.jsp?type=codi&amp;node=P55'>The Online Froissart</ref>
+                              </source>
+                           </recordHist>
+                        </adminInfo>
+                     </additional>
+                  </msDesc>
+               </witness>
+               <!-- Dernier témoin, même niveau d'information que les autres -->
+               <witness xml:id="T">
+                  <msDesc>
+                     <msIdentifier>
+                        <placeName>
+                           <country>France</country>
+                           <settlement>Toulouse</settlement>
+                        </placeName>
+                        <institution>Bibliothèque municipale</institution>
+                        <idno>ms. 511</idno>
+                     </msIdentifier>            
+                     <msContents>
+                        <textLang>Moyen français</textLang>
+                        <msItem>
+                           <docAuthor>Jean Froissart</docAuthor>
+                           <title>Chroniques, Livre I</title>
+                        </msItem>
+                     </msContents>
+                     <physDesc>
+                        <objectDesc>
+                           <supportDesc>
+                              <support>parchemin</support>
+                              <extent>268 folio</extent>
+                           </supportDesc>
+                        </objectDesc>
+                     </physDesc>
+                     <history>
+                        <origin>
+                           <origDate type="date-range" cert="high">1410-1420</origDate>
+                           <origPlace cert="high">Paris</origPlace>
+                        </origin>
+                     </history>
+                     <additional>
+                        <adminInfo>
+                           <recordHist>
+                              <source>
+                                 <ref target='https://www.dhi.ac.uk/onlinefroissart/apparatus.jsp?type=codi&amp;node=Tou'>The Online Froissart</ref>
+                              </source>
+                           </recordHist>
+                        </adminInfo>
+                     </additional>
+                  </msDesc>
+               </witness>
+            </listWit>
+         </sourceDesc>
+      </fileDesc>
+      <!-- INFORMATION SUR LE TEXTE ORIGINAL PERDU A CE JOUR  -->
+      
+      <profileDesc>
+         <creation>
+            <title>Chroniques</title>
+            <origDate type="date-range" cert="high">1379-1381</origDate>
+            <country>France</country>
+            <lang>Moyen français</lang>
+         </creation>
+         
+         <!-- AJOUT DE L'INDEX DES PERSONNAGES ET DES LIEUX DANS LES TEMOINS, 
+              ON MET L'IDENTIFIANT xml:id toujours dans la balise person et place 
+               puis dans cette balise on précisera les différentes composantes des noms
+               utilisés, différence entre les noms contemporains et ceux des témoins.-->
+         
+         <particDesc>
+            <listPerson>
+               <head>Liste des quelques personnages dans les différents témoins</head>
+               <person xml:id="roi_angleterre">
+                  <persName type="contemporary-name">
+                     <forename>Edward</forename>
+                     <genName>III</genName>
+                     <surname>Plantagenet</surname>
+                     <roleName>
+                        <nameLink>d'</nameLink>
+                        <placeName ref="#angleterre">Angleterre</placeName>
+                     </roleName>
+                  </persName>
+                  <persName type="text-name">
+                     <roleName type="roi">
+                        <app>
+                           <lem wit="#N #P #T">roy</lem>
+                           <rdg wit="#C" corresp="#orthographe">
+                              rois
+                              <forename>Edowars</forename>
+                           </rdg>
+                        </app>
+                        <nameLink>d'</nameLink>
+                        <placeName ref="#angleterre">Engleterre</placeName>
+                     </roleName>
+                  </persName>
+               </person>
+               <person xml:id="roi_france">
+                  <persName type="contemporary-name">
+                     <forename>Philippe</forename>
+                     <genName>VI</genName>
+                     <surname>de Valois</surname>
+                     <roleName>
+                        <nameLink>de</nameLink>
+                        <placeName ref="#france">France</placeName>
+                     </roleName>
+                     <addName>le Fortuné</addName>
+                  </persName>
+                  <persName type="text-name">
+                     <roleName type="roi">
+                        <app>
+                           <lem wit="#N #P #T">roy</lem>
+                           <rdg wit="#C" corresp="#orthographe">rois</rdg>
+                        </app>
+                        <nameLink>de</nameLink>
+                        <placeName ref="#france">France</placeName>
+                     </roleName>
+                  </persName>
+               </person>
+               <person xml:id="gobelin_agace">
+                  <persName type="contemporary-name">
+                     <forename>Gobelin</forename>
+                     <surname>Agace</surname>
+                  </persName>
+                  <persName type="text-name">
+                     <!-- Difficulté ici, trois textes font références à Gobelin Agace par son occupation
+                          de valet et un à son, j'aurai voulu mettre une balise roleName dans la balise rdgGrp
+                          et exprimer les 3 témoins dans cette balise mais pas possible avec TEI, je trouve cette techique
+                          la plus expressive des variations c'est pour ça que je l'ai exprimé comme ci-dessus,
+                           pour ce qui est de la balise roleName j'aurai voulu mettre une balise occupation pour moi plus 
+                           représentative du statut social mais TEI ne l'autorise pas non plus-->
+                     <app>
+                        <lem wit="#T">
+                           <forename>Gobin</forename>
+                           <surname>Agace</surname>
+                        </lem>
+                        <rdgGrp type="occupation">
+                           <rdg wit="#C" corresp="#orthographe">
+                              <nameLink>ce</nameLink>
+                              <roleName>varlet</roleName>
+                           </rdg>
+                           <rdg wit="#N" corresp="#orthographe">
+                              <nameLink>ce</nameLink>
+                              <roleName>vallet</roleName>
+                           </rdg>
+                           <rdg wit="#P" corresp="#orthographe">
+                              <nameLink>ce</nameLink>
+                              <roleName>valet</roleName>
+                           </rdg>
+                        </rdgGrp>
+                     </app>
+                  </persName>
+               </person>
+               <person xml:id="godemar_fay">
+                  <persName type="contemporary-name">
+                     <forename>Godemar</forename>
+                     <nameLink>du</nameLink>
+                     <placeName>Fay</placeName>
+                  </persName>
+                  <persName type="text-name">
+                     <forename>
+                        <app>
+                           <lem wit="#N #P #T">Godemar</lem>
+                           <rdg wit="#C" corresp="#orthographe">Godemars</rdg>
+                        </app>
+                     </forename>
+                     <nameLink>
+                        <app>
+                           <lem wit="#N #P #T">du</lem>
+                           <rdg wit="#C" corresp="#orthographe">dou</rdg>
+                        </app>
+                     </nameLink>
+                     <placeName>Fay</placeName>
+                  </persName>
+               </person>
+               <person xml:id="st_georges">
+                  <persName type="contemporary-name">
+                     <roleName>Saint</roleName>
+                     <forename>Georges</forename>
+                  </persName>
+                  <persName type="text-name">
+                     <roleName>saint</roleName>
+                     <forename>
+                        <app>
+                           <lem wit="#N #P #T">George</lem>
+                           <rdg wit="#C">Jorge</rdg>
+                        </app>
+                     </forename>
+                  </persName>
+               </person>
+               <!-- PEUT ETRE AJOUTER LES MARECHAUX ANGLAIS LES FRANCAIS LES ANGLAIS ET LES GENEVOIS-->
+               <listRelation>
+                  <relation name="petit-cousin" active="#roi_angleterre" passive="#roi_france">
+                     <desc>Edward III d'Angleterre est le fils d'Isablelle de France la cousine de Philippe VI de France.</desc>
+                  </relation>
+                  <relation name="suzerain" active="#roi_france" passive="#godemar_fay">
+                     <desc>Godemar du Fay, en étant seigneur de Fay en Normandie est un vassal du roi de France.</desc>
+                  </relation>
+               </listRelation>
+            </listPerson>
+         </particDesc>
+         <settingDesc>
+            <listPlace>
+               <head>Liste des différents lieux évoqués dans les différents témoins</head>
+               <place xml:id="blanchetaque">
+                  <!-- SEPARATION ENTRE L'ORTHOGRAPHE CONTEMPORAINE DES LIEUX ET CELLE DES TEXTES AVEC @TYPE-->
+                  <placeName type="contemporary-name">
+                     Blanchetaque
+                  </placeName>
+                  <placeName type="text-name">
+                     <app>
+                        <lem wit="#T #N">Blanchetaque</lem>
+                        <rdg wit="#C">Blanquetake</rdg>
+                        <rdg wit="#P">Blanchetake</rdg>
+                     </app>
+                  </placeName>
+               </place>
+               <place xml:id="abbeville">
+                  <settlement type="town">
+                     <placeName>Abbeville</placeName>
+                  </settlement>
+               </place>
+               <place xml:id="amiens">
+                  <settlement type="town">
+                     <placeName>Amiens</placeName>
+                  </settlement>
+               </place>
+               <place xml:id="le_crotoy">
+                  <settlement type="village">
+                     <placeName type="contemporary-name">
+                        Le Crotoy
+                     </placeName>
+                     <placeName type="text-name">Crotoy</placeName>
+                  </settlement>
+               </place>
+               <place xml:id="oisemont">
+                  <settlement type="village">
+                     <placeName type="contemporary-name">
+                        Oisemont
+                     </placeName>
+                     <placeName type="text-name">
+                        <app>
+                           <lem wit="#N #T">Oisemont</lem>
+                           <rdg wit="#C">Oizemont</rdg>
+                           <rdg wit="#P">Oziemont</rdg>
+                        </app>
+                     </placeName>
+                  </settlement>
+               </place>
+               <place xml:id="st_riquier">
+                  <settlement type="village">
+                     <placeName type="contemporary-name">
+                        Saint-Riquier
+                     </placeName>
+                     <placeName type="text-name">
+                        <app>
+                           <lem wit="#T">Saint Rikier</lem>
+                        </app>
+                     </placeName>
+                  </settlement>
+               </place>
+               <place xml:id="france">
+                  <country>
+                     <placeName type="contemporary-name">
+                        France
+                     </placeName>
+                     <placeName type="text-name">
+                        <app>
+                           <lem wit="#N #P #T">France</lem>
+                           <rdg wit="#C">Franche</rdg>
+                        </app>
+                     </placeName>
+                  </country>  
+               </place>
+               <place xml:id="angleterre">
+                  <country>
+                     <placeName type="contemporary-name">
+                        Angleterre
+                     </placeName>
+                     <placeName type="text-name">Engleterre</placeName>
+                  </country>
+               </place>
+               <place xml:id="artois">
+                  <region>
+                     <placeName type="contemporary-name">
+                        Artois
+                     </placeName>
+                     <placeName type="text-name">
+                        <app>
+                           <lem wit="#C #T">Artois</lem>
+                           <rdg wit="#N">Artoit</rdg>
+                           <rdg wit="#P">Artoys</rdg>
+                        </app>
+                     </placeName>
+                  </region>
+               </place>
+               <place xml:id="picardie">
+                  <region>
+                     <placeName type="contemporary-name">
+                        Picardie
+                     </placeName>
+                     <placeName type="text-name">
+                        <app>
+                           <lem wit="#P #N #T">Picardie</lem>
+                           <rdg wit="#C">Pikardie</rdg>
+                        </app>
+                     </placeName>
+                  </region>
+               </place>
+               <place xml:id="normandie">
+                  <region>
+                     <placeName>Normandie</placeName>
+                  </region>
+               </place>
+               <place xml:id="ponthieu">
+                  <region>
+                     <placeName type="contemporary-name">
+                        Ponthieu
+                     </placeName>
+                     <placeName type="text-name">Pontieu</placeName>
+                  </region>
+               </place>
+            </listPlace>
+         </settingDesc>
+      </profileDesc>
+      <encodingDesc>
+         <p>
+         
+            Cet encodage a été réalisé sans Collatex, en s'inspirant de l'encodage de <ref>https://github.com/paulhectork/tnah2021_xml-tei_rendu/blob/main/froissart.xml</ref>. Le choix de le faire manuellement 
+            a été fait pour obtenir un encodage réellement uniformisé. Après m'être aperçu que Collatex rendait un encodage très peu lisible et avec de grosse lacune j'ai préféré effacer la possibilité d'en rater une 
+            et le faire moi même. C'est un encodage realisé dans deux grandes balises, l'introduction du texte uniquement présente dans le témoin de Toulouse est dans une balise head et le contenu propre du texte est dans une unique balise p.
+            
+            J'ai laissé tomber la structure en paragraphe présente sur le site The Online Froissart pour m'intéresser exclusivement aux différences sémantiques et orthographiques du texte. A chaque petite variation entre
+            les textes une balise app est mise pour contenir celle-ci, la lem contiendra toujours la variation qui contient le plus d'information et à défaut celle qui à la variante orthographique la plus proche du français contemporain. 
+            C'est en général le témoin parisien qui a une orthographe la plus compréhensible pour nous et le témoin conservé Chicago avec la langue la plus différente. Le témoin de Toulouse a énormément de lacune par rapport aux autres mais 
+            également énormément de passage supplémetaire. J'ai choisi d'utiliser les balises lacunaStart et lacunaEnd pour représenter ces différences lorsqu'elles représentes u bout de phrase conséquent voir même plusieurs phrases entières.
+            Lorsqu'il y a une absence de mot ou d'information on préférera l'indiquer dans la balise app ou rdg avec l'atribut corresp qui fait référence aux éléments de la liste ci dessous qui indique justement les valeurs des variations.
+            Si l'attribut est contenu dans la balise app alors celui-ci se rapporte à tous les rdg présent et leurs témoins par rapport au lem, si l'attribut est dans une balise rdg alors il se rapporte uniquement aux témoins présent dans celui-ci et 
+            sa variation est analysé uniquement par rapport au lem. Sauf une fois j'ai choisi de ne pas utiliser de balise rdgGrp qui je pense aurait complexifié la compréhension de l'encodage. Ci dessous la liste des attributs utilisés :
+            <list>
+               <item xml:id="orthographe">Variation la plus utilisée ( présente dans 153 app sur 232), celle ci indique une différence orthographique sur le même mot utilisé dans les différents témoins.</item>
+               <item xml:id="ponctuation">Indique l'utilisation de ponctuation différente entre les différents témoins. (une virgule un point ou même "et" est considéré comme de la ponctuation)</item>
+               <item xml:id="ordre">Indique l'utilisation des mêmes mots mais disposés dans un ordre différent.</item>
+               <item xml:id="different">Variation assez rare, les témoins utilisent un mot différent mais qui a le même sens.</item>
+               <item xml:id="absence">Indique l'absence d'un mot ou d'une petite partie d'une phrase par rapport au lem.</item>
+               <item xml:id="sens">Variation dans le sens, se rapproche de l'attribut différent dans son utilisation.</item>
+               <item xml:id="ajout">Indique le rajout de mots par rapport aux autres témoins considérés comme largement dispensables ou qui répète une information déjà annoncé dans une lem précédente.</item>
+            </list>
+            Pour chaque personnage ou lieu dans le texte présent dans l'index celui ci est entouré d'une balise persName ou placeName qui fait reference à son identifiant dans l'index.
+         </p>
+      </encodingDesc>
+   </teiHeader>
+   
+   <text>
+      <body>
+         <head>
+            
+            <!-- INTRODUCTION DU CHAPITRE UNIQUEMENT DISPONIBLE DANS LE TEMOIN DE TOULOUSE -->
+            <app>
+               <lem wit="#T">¶ La bataille de la <placeName ref="#blanchetaque">Blanchetaque</placeName> du <persName ref="#roi_angleterre">roy d’Engleterre</persName> contre messire <persName ref="#godemar_fay">Godemar du Fay</persName>. ¶ Le VIXX VIIIe chapitre.</lem>
+               <rdg wit="#N #P #C" corresp="#absence"/>
+            </app>
+         </head>
+         
+         <!-- CORPS DES TEXTES ENCODES CONTENU DANS UN UNIQUE P-->
+         <p>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">Le</lem>
+               <rdg wit ="#C">Ly</rdg>
+            </app>
+            <persName ref="#roi_angleterre">
+               <app corresp="#orthographe">
+               <lem wit="#N #P #T">roy</lem>
+               <rdg wit="#C">rois</rdg>
+            </app>
+            d'Engleterre
+            </persName> ne 
+            <app corresp="#orthographe">
+               <lem wit="#C #P #T">dormi</lem>
+               <rdg wit="#N">dormy</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">mie</lem>
+               <rdg wit="#C">mies</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P">grandement</lem>
+               <rdg wit="#C #N">granment</rdg>
+               <rdg wit="#T">grantment</rdg>
+            </app>
+            celle nuit
+            <app corresp="#ponctuation">
+               <lem wit="#C #N #P">, ains</lem>
+               <rdg wit="#T">. Ains</rdg>
+            </app>
+            se leva a mienuit et fist sonner
+            <app>
+               <lem wit="#N #P">la</lem>
+               <rdg wit="#C" corresp="#orthographe">le</rdg>
+               <rdg wit="#T" corresp="#sens">sa</rdg>
+            </app>
+            trompette
+            <app corresp="#absence">
+               <lem wit="#C #N #P"> en signe de deslogier</lem>
+               <rdg wit="#T"/>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#C #N">.</lem>
+               <rdg wit="#P">,</rdg>
+               <rdg wit="#T">et dont</rdg>
+            </app>
+            <app>
+               <lem wit="#N">Chascun</lem>
+               <rdg wit="#P #T" corresp="#ponctuation">chascun</rdg>
+               <rdg wit="#C" corresp="#orthographe">Cascuns</rdg>
+            </app>
+            fu
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">tantost</lem>
+               <rdg wit="#C">tantos</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">appareillié</lem>
+               <rdg wit="#C #T">appareilliés</rdg>
+            </app>
+            ,
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">sommiers</lem>
+               <rdg wit="#C">sommier</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #T">trousséz</lem>
+               <rdg wit="#C">toursés</rdg>
+               <rdg wit="#P">trousés</rdg>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#C #N #P">,</lem>
+               <rdg wit="#T">et</rdg>
+            </app>
+            chars chargiés
+            <app>
+               <lem wit="#N #T">. Si</lem>
+               <rdg wit="#C" corresp="#orthographe">Sy</rdg>
+               <rdg wit="#P" corresp="#ponctuation">, si</rdg>
+            </app>
+            se partirent
+            <app corresp="#orthographe">
+               <lem wit="#N #T">sur</lem>
+               <rdg wit="#P">sus</rdg>
+               <rdg wit="#C">sour</rdg>
+            </app>
+            le point
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">du</lem>
+               <rdg wit="#C">dou</rdg>
+            </app>
+            jour de la ville
+            <placeName ref="#oisemont">
+               <app corresp="#orthographe">
+                  <lem wit="#N #T">d'Oisement</lem>
+                  <rdg wit="#C">Oizemont</rdg>
+                  <rdg wit="#P">d'Oziemont</rdg>
+               </app>
+            </placeName>
+            <app corresp="#ponctuation">
+               <lem wit="#C #P #T">et</lem>
+               <rdg wit="#N">. Puis<pb n="99 r"/></rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#C #P">chevauchierent</lem>
+               <rdg wit="#N #T">chevaucierent</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#C #N #T">sur</lem>
+               <rdg wit="#P">sus</rdg>
+            </app>
+            le conduit de
+            <persName ref="#gobelin_agace">
+               <app corresp="#sens">
+                  <lem wit="#T">Gobin Agace</lem>
+                  <rdgGrp corresp="#orthographe" type="occupation">
+                     <rdg wit="#C">ce varlet</rdg>
+                     <rdg wit="#N">ce vallet</rdg>
+                     <rdg wit="#P">ce valet</rdg>
+                  </rdgGrp>
+               </app>
+            </persName>
+            <app corresp="#absence"> 
+               <lem wit="#C #N #P">, qui</lem>
+               <rdg wit="#T"/>
+            </app>
+            <app>
+               <lem wit="#N">les</lem>
+               <rdg wit="#C #P" corresp="#orthographe">lez</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#C #N #P">menoit, et</lem>
+               <rdg wit="#T"/>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#C">fisent</lem>
+               <rdg wit="#N #P #T"/>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#C #T">tant<lacunaStart wit="#T"/></lem>
+               <rdg wit="#N #P"/>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#C">et</lem>
+               <rdg wit="#N #P"/> 
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">si</lem>
+               <rdg wit="#C">sy</rdg>
+            </app>
+            bien
+            <app corresp="#orthographe">
+               <lem wit="#C">s'esploitierent</lem>
+               <rdg wit="#N">exploitierent</rdg>
+               <rdg wit="#P">esploitierent</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#C #P">qu'il</lem>
+               <rdg wit="#N #T"><lacunaEnd wit="#T"/>qu'ilz</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">vindrent</lem>
+               <rdg wit="#C"><pb n="107 r"/>vinrent</rdg>
+            </app>
+            environ
+            <app corresp="#orthographe">
+               <lem wit="#P">soleil</lem>
+               <rdg wit="#N #T">souleil</rdg>
+               <rdg wit="#C">solel</rdg>
+            </app>
+            levant
+            <app>
+               <lem wit="#P">assés prez</lem>
+               <rdg wit="#C" corresp="#orthographe">asséz pres</rdg>
+               <rdg wit="#N #T" corresp="#sens">a</rdg>
+            </app>
+            <app>
+               <lem wit="#C #P">de</lem>
+               <rdg wit="#N #T" corresp="#absence"/>
+            </app>
+            ce gué que on
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">claime</lem>
+               <rdg wit="#C">claimme</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">la</lem>
+               <rdg wit="#C">a le</rdg>
+            </app>
+            <placeName ref="#blanchetaque">               
+               <app corresp="#orthographe">
+                  <lem wit="#N #T">Blanchetaque</lem>
+                  <rdg wit="#C">Blanquetake</rdg>
+                  <rdg wit="#P">Blanchetake</rdg>
+               </app>
+            </placeName>
+            <app corresp="#ponctuation">
+               <lem wit="#C #T">,</lem>
+               <rdg wit="#N #P"></rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">mais le fleuve de la</lem>
+               <rdg wit="#C">mes li fluns de le</rdg>
+            </app>
+            mer estoit 
+            <app corresp="#orthographe">
+               <lem wit="#C #N #T">adont</lem>
+               <rdg wit="#P">adonc</rdg>
+            </app>
+            tout
+            <app corresp="#orthographe">
+               <lem wit="#N #P">plain</lem>
+               <rdg wit="#C">plains</rdg>
+               <rdg wit="#T">plein</rdg>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#N #P #T">, si</lem>
+               <rdg wit="#C">. Sy</rdg>
+            </app>
+            ne peurent
+            <app corresp="#absence">
+               <lem wit="#N">encore</lem>
+               <rdg wit="#C #P #T"></rdg>
+            </app>
+            passer
+            <app corresp="#ponctuation"> 
+               <lem wit="#C #P">,</lem>
+               <rdg wit="#N #T">.</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P">aussi</lem>
+               <rdg wit="#C">ossy</rdg>
+               <rdg wit="#N #T">Aussi</rdg>
+            </app>
+            bien 
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">couvenoit</lem>
+               <rdg wit="#C">convenoit</rdg>
+            </app>
+            il au <persName ref="#roi_angleterre">roi</persName> attendre ses gens
+            <app corresp="#ponctuation">
+               <lem wit="#N #P #T"></lem>
+               <rdg wit="#C">,</rdg>
+            </app>
+            qui venoient
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">aprés</lem>
+               <rdg wit="#C">appriés</rdg>
+            </app>
+            lui
+            <app corresp="#ponctuation">
+               <lem wit="#C #N #P">.</lem>
+               <rdg wit="#T">,</rdg>
+            </app>
+            <app>
+               <lem wit="#N #P">Si</lem>
+               <rdg wit="#C" corresp="#orthographe">Sy</rdg>
+               <rdg wit="#T" corresp="#ponctuation">si</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">demoura</lem>
+               <rdg wit="#C">demora</rdg>
+            </app>
+            <app corresp="#sens">
+               <lem wit="#C #P #T">la endroit</lem>
+               <rdg wit="#N">ylec</rdg>
+            </app>
+            jusque
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">aprés</lem>
+               <rdg wit="#C">appriés</rdg>
+            </app>
+            prime que
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">le fleuve</lem>
+               <rdg wit="#C">li fluns</rdg>
+            </app>
+            s'en
+            <app corresp="#orthographe">
+               <lem wit="#C #T">fu</lem>
+               <rdg wit="#N">feust</rdg>
+               <rdg wit="#P">fust</rdg>
+            </app>
+            <app corresp="#ajout">
+               <lem wit="#N #P #T"></lem>
+               <rdg wit="#C">tous</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">raléz</lem>
+               <rdg wit="#C">ralés</rdg>
+               <rdg wit="#T">ralé</rdg>
+            </app>
+            .
+            <app corresp="#absence">
+               <lem wit="#C #N #P">Et</lem>
+               <rdg wit="#T"><lacunaStart wit="#T"/></rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">ainçois</lem>
+               <rdg wit="#C">anchois</rdg>
+            </app>
+            que
+            <app corresp="#orthographe">
+               <lem wit="#N #P">le</lem>
+               <rdg wit="#C">ly</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P">fleuve</lem>
+               <rdg wit="#C">fluns</rdg>
+               <rdg wit="#N">flun</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#C #P">s'en fust</lem>
+               <rdg wit="#N">en feust</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P">ralés</lem>
+               <rdg wit="#C">rallés</rdg>
+               <rdg wit="#N">raléz</rdg>
+            </app>
+            ,
+            <app>
+               <lem wit="#P">vint d'autrepart messire <persName ref="#godemar_fay">Godemar du Fay</persName></lem>
+               <rdg wit="#C" corresp="#orthographe">vint d’autre part messires <persName ref="#godemar_fay">Godemars dou Fay</persName></rdg>
+               <rdg wit="#N" corresp="#ordre"> messire <persName ref="#godemar_fay">Godemar du Fay</persName> vint d’autrepart la riviere</rdg>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#P #C">a grant</lem>
+               <rdg wit="#N"></rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P">foison</lem>
+               <rdg wit="#C">fuison</rdg>
+               <rdg wit="#N"/>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#C #P">de gens d'armes</lem>
+               <rdg wit="#N"/>
+            </app>
+            <app>
+               <lem wit="#P">envoiés</lem>
+               <rdg wit="#C" corresp="#orthographe">envoiiés</rdg>
+               <rdg wit="#N" corresp="#absence"/>
+            </app>
+            depar
+            <app corresp="#ponctuation">
+               <lem wit="#C #N #P">le</lem>
+               <rdg wit="#T"><lacunaEnd wit="#T"/>Le</rdg>
+            </app>
+            <persName ref="#roi_france">roy de France</persName>
+            <app corresp="#absence">
+               <lem wit="#C #P">, si comme vous avés</lem>
+               <rdg wit="#N #T"><lacunaStart wit="#N #T"/></rdg>
+            </app>
+            oy
+            <app corresp="#orthographe">
+               <lem wit="#P">ci</lem>
+               <rdg wit="#C">chi</rdg>
+            </app>
+            <app>
+               <lem wit="#C #P">dessus recorder.</lem>
+               <rdg wit="#T"><lacunaEnd wit="#T"/></rdg>
+            </app>
+            <!-- Partie de texte unique au manuscrit T -->
+            <app>
+               <lem wit="#T">
+               avoit adéz ses coureurs sur le paÿs qui lui rapportoient le couvenant des Englois, si pensa qu’il enclorroit
+            le <persName ref="#roi_angleterre">roy d’Engleterre</persName> entre <placeName ref="#abbeville">Abbeville</placeName> et la riviere de Somme et le prendroit ou combateroit 
+            a sa voulenté. Siques des lors qu’il estoit encore a <placeName ref="#amiens">Amiens</placeName>,
+               </lem>
+               <rdg wit="#C #P"><lacunaStart wit="#C #P"/></rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P"><lacunaEnd wit="#P"/>Si</lem>
+               <rdg wit="#C"><lacunaEnd wit="#C"/>Sy</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <app corresp="#ajout">
+               <lem wit="#C #P"/>
+               <rdg wit="#T">il</rdg>
+            </app>
+            avoit
+            <app>
+               <lem wit="#P">le dit</lem>
+               <rdg wit="#T" corresp="#absence">ordonné I grant baron de <placeName ref="#normandie">Normandie</placeName>, appellé</rdg>
+               <rdg wit="#C" corresp="#orthographe">li dis</rdg>
+            </app>
+            <persName ref="#godemar_fay">
+               <app corresp="#orthographe">
+                  <lem wit="#P #T">messire Godemar</lem>
+                  <rdg wit="#C">messires Godemars</rdg>
+               </app>
+               <app corresp="#absence">
+                  <lem wit="#T">du Fay</lem>
+                  <rdg wit="#C #P"/>
+               </app>
+            </persName>
+            <app>
+               <lem wit="#P">en devant a</lem>
+               <rdg wit="#C" corresp="#orthographe">e venant a</rdg>
+               <rdg wit="#T" corresp="#sens">pour aller garder le passage de</rdg>
+            </app>
+            <placeName ref="#blanchetaque">
+               <app corresp="#orthographe">
+                  <lem wit="#P">la Blanchetake</lem>
+                  <rdg wit="#C">le Blanquetake</rdg>
+                  <rdg wit="#T">la Blanchetaque,</rdg>
+               </app>
+            </placeName>
+            <app corresp="#orthographe">
+               <lem wit="#P">rassemblé</lem>
+               <rdg wit="#C">rassamblé</rdg>
+               <rdg wit="#T"><lacunaStart wit="#T"/></rdg>
+            </app>
+            grant
+            <app corresp="#orthographe">
+               <lem wit="#P">foison</lem>
+               <rdg wit="#C">fuison</rdg>
+            </app>
+            des gens
+            <app corresp="#orthographe">
+               <lem wit="#P">du paÿs et</lem>
+               <rdg wit="#C">dou païs,</rdg>
+            </app>
+            <app>
+               <lem wit="#C #P">tant qu'il estoient <lacunaStart wit="#C #P"/></lem>
+            </app>
+            
+            <!-- Partie de texte unique au manuscrit T -->
+            <app>
+               <lem wit="#T"><lacunaEnd wit="#T"/>ou il couvenoit les Englois passer et non par ailleurs. Si s’estoit party monseigneur <persName ref="#godemar_fay">Godemar</persName> 
+            atout mille hommes <pb n="102 r"/>d’armes et VM a pié parmy les Genevois. Si estoit venu a <placeName ref="#st_riquier">Saint Rikier</placeName> en 
+            <placeName ref="#ponthieu">Pontieu</placeName> et de la au <placeName ref="#le_crotoy">Crotoy</placeName>, ou le dit passage siet. Et avoit amené ainsi qu’il chevauçoit celle 
+            part grant foison des gens du paÿs, et aussi estoient venuz avec lui ceulx d’Abbeville moult 
+            estoffeement, et furent au dit passage au devant des Englois
+               </lem>
+            </app>
+            <app corresp="#ajout">
+               <lem wit="#C #P #T"/>
+               <rdg wit="#N"><lacunaEnd wit="#N"/>a</rdg>
+            </app>
+            bien XIIM
+            <app corresp="#orthographe">
+               <lem wit="#T #N">hommes que uns que autres</lem>
+               <rdg wit="#C"><lacunaEnd wit="#C"/>, uns c'autres</rdg>
+               <rdg wit="#P"><lacunaEnd wit="#P"/>uns qu'autres</rdg>
+            </app>
+            ,
+            <app corresp="#ajout">
+               <lem wit="#C #N #P"/>
+               <rdg wit="#T">dont il y avoit bien IIM tourniquiaux. Lors quant l'ost d'<placeName ref="#angleterre">Engleterre</placeName> estoit la venu,</rdg>
+            </app>
+            <app corresp="#ajout">
+               <lem wit="#C #N #P">qui</lem>
+               <rdg wit="#T">messire <persName ref="#godemar_fay">Godemar du Fay</persName></rdg>
+            </app>
+            <app>
+               <lem wit="#P #N">tantost</lem>
+               <rdg wit="#C" corresp="#orthographe">tantos</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <app corresp="#orthographe #ajout">
+               <lem wit="#P #N #C">se rengierent</lem>
+               <rdg wit="#T">vient rengier ses Français</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#T #C">sur</lem>
+               <rdg wit="#N #P">sus</rdg>
+            </app>
+            le pas de la riviere pour
+            <app corresp="#ajout">
+               <lem wit="#C #P #T"/>
+               <rdg wit="#N">le</rdg>
+            </app>
+            garder et
+            <app corresp="#orthographe">
+               <lem wit="#N #T">defendre</lem>
+               <rdg wit="#C #P">deffendre</rdg>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#C #P #T">le passage</lem>
+               <rdg wit="#N"/>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#C #N #T">.</lem>
+               <rdg wit="#P">,</rdg>
+            </app>
+            <app>
+               <lem wit="#C #N">Mais</lem>
+               <rdg wit="#P" corresp="#ponctuation">mais</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P #N">le</lem>
+               <rdg wit="#C">li</rdg>
+               <rdg wit="#T">Le</rdg>
+            </app>
+            <persName ref="#roi_angleterre">
+               <app>
+                  <lem wit="#C">rois Edowars</lem>
+                  <rdg wit="#N #P #T" corresp="#orthographe #absence">roy</rdg>
+               </app>
+               d'Engleterre
+            </persName>
+            <app corresp="#absence">
+               <lem wit="#C #T"/>
+               <rdg wit="#P"><pb n="136v"/></rdg>
+               <rdg wit="#N"><lacunaStart wit="#N"/></rdg>
+            </app>
+            ne
+            <app corresp="#orthographe">
+               <lem wit="#P #T">laissa mie</lem>
+               <rdg wit="#C">leissa mies</rdg>
+            </app>
+            a passer pour
+            <app corresp="#orthographe">
+               <lem wit="#P #T">ce</lem>
+               <rdg wit="#C">che</rdg>
+            </app>
+            <app corresp="#orthographe #ponctuation">
+               <lem wit="#C">, ains</lem>
+               <rdg wit="#P">avis</rdg>
+               <rdg wit="#T">. Ainçois</rdg>
+            </app>
+            <app corresp="#ajout">
+               <lem wit="#C #P"/>
+               <rdg wit="#T">quant le fleuve de la mer s'en fu ralé, il</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T"><lacunaEnd wit="#N"/>commanda</lem>
+               <rdg wit="#C">conmanda</rdg>
+            </app>
+            a ses
+            <app corresp="#orthographe">
+               <lem wit="#P #N">mareschaux</lem>
+               <rdg wit="#C">marescaus</rdg>
+               <rdg wit="#T">mareschaulx</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">tantost</lem>
+               <rdg wit="#C">tantos</rdg>
+            </app>
+            ferir en
+            <app corresp="#orthographe">
+               <lem wit="#N #T">l'eaue</lem>
+               <rdg wit="#P">l'yaue</rdg>
+               <rdg wit="#C">l'aige</rdg>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#C #N #P">et ses archiers traire</lem>
+               <rdg wit="#T"><lacunaStart wit="#T"/></rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#C #P">fortement</lem>
+               <rdg wit="#N">forment</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N">aux</lem>
+               <rdg wit="#P">aus</rdg>
+               <rdg wit="#C">as</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P #N">François</lem>
+               <rdg wit="#C">Franchois,</rdg>
+            </app>
+            qui estoient en
+            <app corresp="#orthographe">
+               <lem wit="#N">l'eaue</lem>
+               <rdg wit="#P">l'yauge</rdg>
+               <rdg wit="#C">l'aige</rdg>
+            </app>
+            et
+            <app corresp="#orthographe">
+               <lem wit="#N">sur</lem>
+               <rdg wit="#C #P">sus</rdg>
+            </app>
+            le rivage. Lors
+            <app corresp="#orthographe">
+               <lem wit="#P #N">firent les II mareschaux</lem>
+               <rdg wit="#C">fisent ly doy marescal</rdg>
+            </app>
+            d'<placeName ref="#angleterre">Engleterre</placeName>
+            <app corresp="#orthographe">
+               <lem wit="#P">chevauchier</lem>
+               <rdg wit="#C #N">chevaucier</rdg>
+            </app>
+            leurs bannieres
+            <app>
+               <lem wit="#N #P #T"/>
+               <rdg wit="#T"><lacunaEnd wit="#T"/></rdg>
+            </app>
+            ou nom de Dieu et de 
+            <persName ref="#st_georges">
+               saint
+               <app corresp="#orthographe">
+                  <lem wit="#N #P #T">George</lem>
+                  <rdg wit="#C">Jorge</rdg>
+               </app>
+            </persName>
+            <app>
+               <lem wit="#C #P #N">et eulx aprés,</lem>
+               <rdg wit="#C" corresp="#orthographe #ponctuation">et iauls appriés.</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <app>
+               <lem wit="#P #N">si</lem>
+               <rdg wit="#C" corresp="#orthographe">Sy</rdg>
+               <rdg wit="#T" corresp="#different">Lors</rdg>
+            </app>
+            se ferirent
+            <app corresp="#different">
+               <lem wit="#P #C #N">en</lem>
+               <rdg wit="#T">dedens</rdg>
+            </app>
+            <app>
+               <lem wit="#N">l'eaue</lem>
+               <rdg wit="#C" corresp="#orthographe">l'aige</rdg>
+               <rdg wit="#P" corresp="#orthographe">l'yaue</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <app>
+               <lem wit="#P #C">de</lem>
+               <rdg wit="#N" corresp="#different">a</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <app>
+               <lem wit="#P #N">plain eslais</lem>
+               <rdg wit="#C" corresp="#orthographe">plains eslains,</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P #N #T">les</lem>
+               <rdg wit="#C">ly</rdg>
+            </app>
+            plus
+            <app corresp="#orthographe">
+               <lem wit="#C #P">bachelereus</lem>
+               <rdg wit="#N #T">bachelereux</rdg>
+            </app>
+            et
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">les</lem>
+               <rdg wit="#C">li</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">mieux</lem>
+               <rdg wit="#T">mieulx</rdg>
+               <rdg wit="#C">mieus</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P #C">montés</lem>
+               <rdg wit="#N #T">montéz</rdg>
+            </app>
+            devant. La eut en la 
+            <app corresp="#absence">
+               <lem wit="#C #N #P">meisme</lem>
+               <rdg wit="#T"/>
+            </app>
+            riviere
+            <app corresp="#orthographe">
+               <lem wit="#N #P">faite</lem>
+               <rdg wit="#C #T">fait</rdg>
+            </app>
+            mainte jouste et maint homme reversé
+            <app corresp="#different">
+               <lem wit="#C #N #P">d'une part</lem>
+               <rdg wit="#T">d'un costé</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">et d'autre</lem>
+               <rdg wit="#C">et d'aultre</rdg>
+            </app>
+            <app corresp="#ponctuation #different">
+               <lem wit="#N #P #C">. La</lem>
+               <rdg wit="#T">et y</rdg>
+            </app>
+            <app>
+               <lem wit="#P #N">commença</lem>
+               <rdg wit="#C" corresp="#orthographe">commencha</rdg>
+               <rdg wit="#T" corresp="#different">eut</rdg>
+            </app>
+            <app>
+               <lem wit="#P #N">fort</lem>
+               <rdg wit="#C" corresp="#orthographe">fors</rdg>
+               <rdg wit="#T" corresp="#different">dur</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">hustin</lem>
+               <rdg wit="#C">hustins</rdg>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#P">,</lem>
+               <rdg wit="#C #T">.<lacunaStart wit="#T"/></rdg>
+               <rdg wit="#N"/>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">car <persName ref="#godemar_fay">messire Godemar</persName></lem>
+               <rdg wit="#C">Car <persName ref="#godemar_fay">messires Godemars</persName></rdg>
+            </app>
+            et
+            <app  corresp="#orthographe">
+               <lem wit="#N #P">les siens defendoient vaillement</lem>
+               <rdg wit="#C">ly sien deffendoient vassaument</rdg>
+            </app>
+            <app>
+               <lem wit="#C #N #P">le passage.</lem>
+               <rdg wit="#T"><lacunaEnd wit="#T"/></rdg>
+            </app>
+            La
+            <app  corresp="#absence">
+               <lem wit="#C #P">y</lem>
+               <rdg wit="#N #T"/>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">eut</lem>
+               <rdg wit="#C">eult</rdg>
+            </app>
+            aucuns chevaliers escuiers
+            <app>
+               <lem wit="#N #P">françois</lem>
+               <rdg wit="#C" corresp="#orthographe">franchois,</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <placeName ref="#artois">
+               <app corresp="#orthographe">
+                  <lem wit="#C #T">d'Artois</lem>
+                  <rdg wit="#N">d'Artoit</rdg>
+                  <rdg wit="#P">d'Artoys</rdg>
+               </app>
+            </placeName>
+            <app corresp="#ponctuation">
+               <lem wit="#C #P #T">et</lem>
+               <rdg wit="#N">,</rdg>
+            </app>
+            de
+            <placeName ref="#picardie">
+               <app corresp="#orthographe">
+                  <lem wit="#N #P #T">Picardie</lem>
+                  <rdg wit="#C">Pikardie</rdg>
+               </app>
+            </placeName>
+            <app corresp="#ponctuation">
+               <lem wit="#C #N #P">et</lem>
+               <rdg wit="#T">,</rdg>
+            </app>
+            de 
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">la charge monsiegneur</lem>
+               <rdg wit="#C">le carge monsigneur</rdg>
+            </app>
+            <persName ref="#godemar_fay">Godemar</persName>, qui pour leur honneur
+            <app corresp="#orthographe">
+               <lem wit="#P #N #T">avancier</lem>
+               <rdg wit="#C">avanchier</rdg>
+            </app>
+            se
+            <app>
+               <lem wit="#N #P">mettoient</lem>
+               <rdg wit="#T" corresp="#orthographe">mistrent</rdg>
+               <rdg wit="#C" corresp="#different">feroient</rdg>
+            </app>
+            ou dit 
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">gue<lacunaStart wit="#T"/></lem>
+               <rdg wit="#C">gués</rdg>
+            </app>
+            et ne
+            <app corresp="#orthographe">
+               <lem wit="#N #P">vouloient pas</lem>
+               <rdg wit="#C">voloient miéz</rdg>
+            </app>
+            estre
+            <app corresp="#orthographe">
+               <lem wit="#P">trouvés</lem>
+               <rdg wit="#C">trouvé</rdg>
+               <rdg wit="#N">trouvéz</rdg>
+               
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N">sur</lem>
+               <rdg wit="#C #P">sus</rdg>
+            </app>
+            les
+            <app corresp="#orthographe">
+               <lem wit="#N #P">champs mez</lem>
+               <rdg wit="#C">camps mais</rdg>
+               <rdg wit="#T"><lacunaEnd wit="#T"/></rdg>
+            </app>
+            avoient plus chier a jouster en
+            <app corresp="#orthographe">
+               <lem wit="#N #T">l'eaue</lem>
+               <rdg wit="#C">l'aigue</rdg>
+               <rdg wit="#P">l'yaue</rdg>
+            </app>
+            que
+            <app corresp="#orthographe">
+               <lem wit="#N #T">sur</lem>
+               <rdg wit="#C #P">sus</rdg>
+            </app>
+            terre.
+            <app corresp="#orthographe">
+               <lem wit="#N #P">Si y</lem>
+               <rdg wit="#C">Sy i</rdg>
+               <rdg wit="#T"><lacunaStart wit="#T"/></rdg>
+            </app>
+            eut, je vous
+            <app corresp="#orthographe">
+               <lem wit="#C #P">di</lem>
+               <rdg wit="#N">dy</rdg>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#N #P">bien</lem>
+               <rdg wit="#C"/>
+            </app>
+            ,
+            <app corresp="#ordre">
+               <lem wit="#N #P">la fait</lem>
+               <rdg wit="#C">fait la</rdg>
+            </app>
+            mainte
+            <app corresp="#absence">
+               <lem wit="#N #P">belle</lem>
+               <rdg wit="#C"/>
+            </app>
+            jouste et
+            <app corresp="#absence">
+               <lem wit="#C #P"> mainte belle</lem>
+               <rdg wit="#N"/>
+            </app>
+            appertises d'armes
+            <app corresp="#ponctuation">
+               <lem wit="#C #P">et</lem>
+               <rdg wit="#N">. Et</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#C #N">eurent</lem>
+               <rdg wit="#P">orent</rdg>
+            </app>
+            <app corresp="#ajout">
+               <lem wit="#N #P"></lem>
+               <rdg wit="#C">la li Englés de premiers I moult dur rencontre. Car tout chil qui estoient avoecquez <persName ref="#godemar_fay">mosigneur Godemars</persName></rdg>
+            </app>
+            la 
+            <app corresp="#orthographe">
+               <lem wit="#P #N">envoiéz</lem>
+               <rdg wit="#C">envoiiet</rdg>
+            </app>
+            pour
+            <app corresp="#ordre">
+               <lem wit="#C #P">deffendre et garder</lem>
+               <rdg wit="#N">garder et deffendre</rdg>
+            </app>
+            le passage
+            <app corresp="#absence">
+               <lem wit="#C">, estoient</lem>
+               <rdg wit="#N #P"/>
+               <rdg wit="#T"><lacunaEnd wit="#T"/></rdg>
+            </app>
+            <app>
+               <lem wit="#N #P">gens d'eslite</lem>
+               <rdg wit="#C" corresp="#orthographe">gent d'eslitte</rdg>
+               <rdg wit="#T" corresp="#sens">Les François</rdg>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#P">et</lem>
+               <rdg wit="#N">,</rdg>
+               <rdg wit="#C">. Et</rdg>
+               <rdg wit="#T"/>
+            </app>
+            se tenoient
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">tous</lem>
+               <rdg wit="#C">tout</rdg>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#C #N #P">bien</lem>
+               <rdg wit="#T"/>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">rengiés</lem>
+               <rdg wit="#C">rengiet</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #T">sur</lem>
+               <rdg wit="#C #P">sus</rdg>
+            </app>
+            le destroit
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">du</lem>
+               <rdg wit="#C">dou</rdg>
+            </app>
+            passage de
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">la</lem>
+               <rdg wit="#C">le</rdg>
+            </app>
+            riviere, dont
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">les Englois</lem>
+               <rdg wit="#C">li Englés</rdg>
+            </app>
+            estoient
+            <app corresp="#orthographe">
+               <lem wit="#N #P">durs</lem>
+               <rdg wit="#C #T">dur</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P">rencontrés</lem>
+               <rdg wit="#N #T">rencontréz</rdg>
+               <rdg wit="#C">rencontré</rdg>
+            </app>
+            quant
+            <app corresp="#orthographe">
+               <lem wit="#C #P">il</lem>
+               <rdg wit="#N #T">ilz</rdg>
+            </app>
+            venoient a l'issue de
+            <app corresp="#orthographe">
+               <lem wit="#N #T">l'eaue</lem>
+               <rdg wit="#C">l'aigue</rdg>
+               <rdg wit="#P">l'yaue</rdg>
+            </app>
+            pour prendre terre. Et
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">y</lem>
+               <rdg wit="#C">i</rdg>
+            </app>
+            avoit Genevois
+            <app corresp="#ponctuation">
+               <lem wit="#C #N #P">,</lem>
+               <rdg wit="#T"/>
+            </app>
+            qui
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">du</lem>
+               <rdg wit="#C">dou</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#C #N #T">trait</lem>
+               <rdg wit="#P">tret</rdg>
+            </app>
+            leur
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">faisoient</lem>
+               <rdg wit="#C">fasoient</rdg>
+            </app>
+            moult de
+            <app corresp="#orthographe">
+               <lem wit="#P #T">maulx</lem>
+               <rdg wit="#C #N">mauls</rdg>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#P">,</lem>
+               <rdg wit="#C">.</rdg>
+               <rdg wit="#N #T"></rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">mais les archiers</lem>
+               <rdg wit="#C">Mes ly archier</rdg>
+            </app>
+            d'<placeName ref="#angleterre">Engleterre</placeName> traoient
+            <app corresp="#ajout">
+               <lem wit="#N #P #T"/>
+               <rdg wit="#C">si fort et</rdg>
+            </app>
+            <app>
+               <lem wit="#P">si</lem>
+               <rdg wit="#N #T" corresp="#different">moult</rdg>
+               <rdg wit="#C" corresp="#orthographe">sy</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">onniement</lem>
+               <rdg wit="#C">ouniement</rdg>
+            </app>
+            <app>
+               <lem wit="#P">qu'a merveilles</lem>
+               <rdg wit="#C" corresp="#orthographe"> c'a merveillez</rdg>
+               <rdg wit="#N #T" corresp="#absence"/>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#P #C">et</lem>
+               <rdg wit="#N #T">. Et</rdg>
+            </app>
+            <app>
+               <lem wit="#P">toutdis</lem>
+               <rdg wit="#C #N" corresp="#orthographe">toudis</rdg>
+               <rdg wit="#T" corresp="#absence"/>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#N #P #T"/>
+               <rdg wit="#C">,</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #T">endementiers</lem>
+               <rdg wit="#P">entremetieres</rdg>
+               <rdg wit="#C">entrués</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P #C">qu'il</lem>
+               <rdg wit="#N #T">qu'ilz</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P #N">ensonnoient</lem>
+               <rdg wit="#C #T">ensonnioient</rdg>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#C #N #P"/>
+               <rdg wit="#T">,</rdg>
+            </app>
+            les
+            <app corresp="#orthographe">
+               <lem wit="#N #P #T">François</lem>
+               <rdg wit="#C">Franchois,</rdg>
+            </app>
+            les gens d'armes passoient.
+            <app corresp="#absence">
+               <lem wit="#C #N #P">Et sachiés que</lem>
+               <rdg wit="#T"><lacunaStart wit="#T"/></rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">les</lem>
+               <rdg wit="#C">li</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P">Engloys</lem>
+               <rdg wit="#N">Englois</rdg>
+               <rdg wit="#C">Englés</rdg>
+            </app>
+            se
+            <app corresp="#orthographe">
+               <lem wit="#N">prenoient</lem>
+               <rdg wit="#C #P">prendoient</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">pres d'eulz</lem>
+               <rdg wit="#C">priés d'iauls</rdg>
+            </app>
+            combatre
+            <app corresp="#ponctuation">
+               <lem wit="#C #N"/>
+               <rdg wit="#P">,</rdg>
+            </app>
+            car il leur estoit di
+            <app corresp="#orthographe">
+               <lem wit="#P #N">notoirement</lem>
+               <rdg wit="#C">notorement</rdg>
+            </app>
+            que
+            <persName ref="#roi_france">
+               <app corresp="#orthographe">
+                  <lem wit="#N #P">le roy</lem>
+                  <rdg wit="#C">li rois</rdg>
+               </app>
+               de France
+            </persName>
+            les
+            <app corresp="#orthographe #sens">
+               <lem wit="#N">poursuivoit</lem>
+               <rdg wit="#C">sievoit</rdg>
+               <rdg wit="#P">suivoit</rdg>
+            </app>
+            a plus de C M
+            <app corresp="#orthographe">
+               <lem wit="#N #P">hommes</lem>
+               <rdg wit="#C">hommez</rdg>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#N #C">. Et</lem>
+               <rdg wit="#P">et</rdg>
+            </app>
+            ja estoient
+            <app corresp="#orthographe">
+               <lem wit="#N #P">aucuns compaignons</lem>
+               <rdg wit="#C">aucun compagnon</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">coureurs</lem>
+               <rdg wit="#C">coureur</rdg>
+            </app>
+            de la partie des
+            <app corresp="#orthographe">
+               <lem wit="#N #P">François</lem>
+               <rdg wit="#C">Franchois</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P">venus</lem>
+               <rdg wit="#C">venu</rdg>
+               <rdg wit="#N">venuz</rdg>
+            </app>
+            jusques
+            <app corresp="#orthographe">
+               <lem wit="#P">aus Engloys</lem>
+               <rdg wit="#N">aux Englois</rdg>
+               <rdg wit="#C">as Englés</rdg>
+            </app>
+            <app corresp="#ponctuation">
+               <lem wit="#P #C">,</lem>
+               <rdg wit="#N"/>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N">lesquelx</lem>
+               <rdg wit="#P">les quelx</rdg>
+               <rdg wit="#C">liquel</rdg>
+            </app>
+            en
+            <app corresp="#orthographe">
+               <lem wit="#P">raporterent</lem>
+               <rdg wit="#N">rapporterent</rdg>
+               <rdg wit="#C">reporterent</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#N #P">vrayes</lem>
+               <rdg wit="#C">vraies</rdg>
+            </app>
+            <app corresp="#orthographe">
+               <lem wit="#P">ensaignes</lem>
+               <rdg wit="#N">enseignes</rdg>
+               <rdg wit="#C">ensegnes</rdg>
+            </app>
+            au
+            <persName ref="#roi_france">roy de
+               <app corresp="#orthographe">
+                  <lem wit="#N #P">France</lem>
+                  <rdg wit="#C">Franche,</rdg>
+               </app>
+            </persName>
+            si comme vous
+            <app corresp="#orthographe">
+               <lem wit="#P">orrés</lem>
+               <rdg wit="#C">orés</rdg>
+               <rdg wit="#N">orréz</rdg>
+            </app>
+            <app corresp="#absence">
+               <lem wit="#P #C">dire</lem>
+               <rdg wit="#N"/>
+            </app>
+            .
+         </p>
+      </body>
+   </text>
+</TEI>
